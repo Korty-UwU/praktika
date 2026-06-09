@@ -1,0 +1,108 @@
+{
+  "warehouses": [
+    {
+      "id": "86620ea0-be5f-4727-9ad4-8b380797b492",
+      "name": "Основной склад",
+      "location": "Москва",
+      "capacity": 100
+    },
+    {
+      "id": "c9a6dfc9-0f81-4ed1-ae10-7a5806be2174",
+      "name": "Резервный склад",
+      "location": "СПб",
+      "capacity": 50
+    },
+    {
+      "id": "3c1309e7-ce44-438a-ba5f-00c764de3ab7",
+      "name": "Склад запчастей",
+      "location": "Казань",
+      "capacity": 30
+    },
+    {
+      "id": "12aeba75-6ab7-44df-be22-94c37047fed5",
+      "name": "Временное хранение",
+      "location": "Екатеринбург",
+      "capacity": 20
+    },
+    {
+      "id": "1ce3829c-d062-4a6c-a597-140acfa9ab25",
+      "name": "Логистический центр",
+      "location": "Новосибирск",
+      "capacity": 80
+    }
+  ],
+  "equipment": [
+    {
+      "id": "cc906b98-182e-404d-b527-e1346b434ed9",
+      "name": "Погрузчик",
+      "type": "Спецтехника",
+      "price": 500000,
+      "isAvailable": true,
+      "warehouseId": "86620ea0-be5f-4727-9ad4-8b380797b492"
+    },
+    {
+      "id": "1ac9d449-1402-4c9b-b9f4-2825cb8cf241",
+      "name": "Ноутбук",
+      "type": "Офисное",
+      "price": 75000,
+      "isAvailable": true,
+      "warehouseId": "86620ea0-be5f-4727-9ad4-8b380797b492"
+    },
+    {
+      "id": "c49e29a9-7409-4b76-8b37-17c52aafbdde",
+      "name": "Стеллаж",
+      "type": "Мебель",
+      "price": 15000,
+      "isAvailable": false,
+      "warehouseId": "c9a6dfc9-0f81-4ed1-ae10-7a5806be2174"
+    },
+    {
+      "id": "d830093f-18f4-4f11-87e2-1de01b66880f",
+      "name": "Генератор",
+      "type": "Электрооборудование",
+      "price": 120000,
+      "isAvailable": true,
+      "warehouseId": "c9a6dfc9-0f81-4ed1-ae10-7a5806be2174"
+    },
+    {
+      "id": "b34963f8-c702-469f-9d2f-b3cd44897a1a",
+      "name": "Дрель",
+      "type": "Инструмент",
+      "price": 5000,
+      "isAvailable": true,
+      "warehouseId": "3c1309e7-ce44-438a-ba5f-00c764de3ab7"
+    },
+    {
+      "id": "74e1dc9c-42e7-494e-85c4-9acd9277a866",
+      "name": "Экскаватор",
+      "type": "Спецтехника",
+      "price": 2500000,
+      "isAvailable": true,
+      "warehouseId": "12aeba75-6ab7-44df-be22-94c37047fed5"
+    },
+    {
+      "id": "590521ac-7216-42c5-b357-1e182637aba4",
+      "name": "Принтер",
+      "type": "Офисное",
+      "price": 30000,
+      "isAvailable": true,
+      "warehouseId": "1ce3829c-d062-4a6c-a597-140acfa9ab25"
+    },
+    {
+      "id": "18bba028-866d-42e2-ad4a-7598b27c2e2d",
+      "name": "Кондиционер",
+      "type": "Климат",
+      "price": 45000,
+      "isAvailable": true,
+      "warehouseId": "1ce3829c-d062-4a6c-a597-140acfa9ab25"
+    },
+    {
+      "id": "867a9ea0-e209-4bec-b878-6700912066bd",
+      "name": "Мопед",
+      "type": "Техника",
+      "price": 50000,
+      "isAvailable": false,
+      "warehouseId": "c9a6dfc9-0f81-4ed1-ae10-7a5806be2174"
+    }
+  ]
+}
