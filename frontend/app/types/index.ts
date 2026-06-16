@@ -12,5 +12,6 @@ export interface Equipment {
   price: number;
   isAvailable: boolean;
   warehouseId: string;
-  warehouse?: Warehouse; // для вложенных данных
+  warehouse?: Warehouse; 
+  photoUrl?: string;
 }

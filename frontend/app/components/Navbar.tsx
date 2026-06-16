@@ -6,7 +6,7 @@ export default function Navbar() {
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center py-4">
           <Link href="/" className="text-xl font-bold hover:text-gray-300 transition">
-            Учёт оборудования
+          SramWay
           </Link>
           <div className="space-x-4">
             <Link 
