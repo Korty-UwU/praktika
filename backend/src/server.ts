@@ -11,16 +11,16 @@ const PORT = 4000;
 app.use(cors({ origin: 'http://localhost:3000' }));
 app.use(express.json());
 
+app.get('/health', (req, res) => {
+  res.status(200).json({ status: 'OK' });
+});
+
 // Инициализация хранилища
 initStore();
 
 // Роуты
 app.use('/api/warehouses', warehouseRoutes);
 app.use('/api/equipment', equipmentRoutes);
-
-app.get('/health', (req, res) => {
-  res.status(200).json({ status: 'OK' });
-});
 
 // Обработка 404
 app.use((req, res) => {
