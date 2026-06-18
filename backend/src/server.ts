@@ -14,14 +14,6 @@ app.use(express.json());
 // Инициализация хранилища
 initStore();
 
-app.get('/health', (req, res) => {
-  res.status(200).json({ 
-    status: 'OK', 
-    service: 'equipment-backend',
-    timestamp: new Date().toISOString()
-  });
-});
-
 // Роуты
 app.use('/api/warehouses', warehouseRoutes);
 app.use('/api/equipment', equipmentRoutes);
