@@ -19,7 +19,7 @@ app.use('/api/warehouses', warehouseRoutes);
 app.use('/api/equipment', equipmentRoutes);
 
 app.get('/health', (req, res) => {
-  res.status(200).json({ status: 'OK', timestamp: new Date().toISOString() });
+  res.status(200).json({ status: 'OK' });
 });
 
 // Обработка 404
