@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import { API_URL } from '@/lib/api';
 
 interface Warehouse {
   id: string;
@@ -25,37 +26,17 @@ export default function NewEquipmentPage() {
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
-    const loadWarehouses = async () => {
-      try {
-        const response = await fetch('http://localhost:4000/api/warehouses');
-        if (!response.ok) {
-          throw new Error('Не удалось загрузить склады');
-        }
-        const data = await response.json();
-        setWarehouses(data.items || []);
-      } catch (error) {
-        console.error('Ошибка загрузки складов:', error);
-        setError('Не удалось загрузить список складов');
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    loadWarehouses();
-  }, []);
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSaving(true);
     setError(null);
 
     try {
-      const response = await fetch('http://localhost:4000/api/equipment', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
-      });
+const response = await fetch(`${API_URL}/api/equipment`, {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify(formData),
+});
 
       if (!response.ok) {
         const data = await response.json();

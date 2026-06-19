@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
+import { API_URL } from '@/lib/api';
 
 interface Equipment {
   id: string;
@@ -44,26 +45,8 @@ export default function EditEquipmentPage() {
         setLoading(true);
         setError(null);
 
-        const eqResponse = await fetch(`http://localhost:4000/api/equipment/${id}`);
-        if (!eqResponse.ok) {
-          throw new Error('Оборудование не найдено');
-        }
-        const eqData = await eqResponse.json();
-        
-        setFormData({
-          name: eqData.name || '',
-          type: eqData.type || '',
-          price: eqData.price || 0,
-          isAvailable: eqData.isAvailable ?? true,
-          warehouseId: eqData.warehouseId || '',
-        });
+        const response = await fetch(`${API_URL}/api/equipment/${id}`);
 
-        const whResponse = await fetch('http://localhost:4000/api/warehouses');
-        if (!whResponse.ok) {
-          throw new Error('Не удалось загрузить склады');
-        }
-        const whData = await whResponse.json();
-        setWarehouses(whData.items || []);
       } catch (error) {
         console.error('Ошибка загрузки:', error);
         setError(error instanceof Error ? error.message : 'Не удалось загрузить данные');
@@ -84,11 +67,7 @@ export default function EditEquipmentPage() {
     setSuccess(false);
 
     try {
-      const response = await fetch(`http://localhost:4000/api/equipment/${id}`, {
-        method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
-      });
+      const response = await fetch(`${API_URL}/api/warehouses`);
 
       if (!response.ok) {
         const data = await response.json();

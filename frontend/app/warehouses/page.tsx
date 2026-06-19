@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { API_URL } from '@/lib/api';
 
 interface Warehouse {
   id: string;
@@ -21,7 +22,7 @@ export default function WarehousesPage() {
       setLoading(true);
       setError(null);
       
-      const response = await fetch('http://localhost:4000/api/warehouses');
+      const response = await fetch(`${API_URL}/api/warehouses`);
       
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
@@ -42,9 +43,7 @@ export default function WarehousesPage() {
     
     try {
       setDeletingId(id);
-      const response = await fetch(`http://localhost:4000/api/warehouses/${id}`, {
-        method: 'DELETE',
-      });
+      const response = await fetch(`${API_URL}/api/warehouses`);
       
       if (!response.ok) {
         throw new Error('Не удалось удалить склад');

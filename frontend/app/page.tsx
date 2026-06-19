@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { API_URL } from '@/lib/api';
 
 interface Equipment {
   id: string;
@@ -29,14 +30,14 @@ export default function HomePage() {
       try {
         setLoading(true);
         
-        const eqResponse = await fetch('http://localhost:4000/api/equipment');
+        const eqResponse = await fetch(`${API_URL}/api/equipment`);
         const eqData = await eqResponse.json();
         const equipment = eqData.items || [];
         setEquipmentCount(equipment.length);
         setAvailableCount(equipment.filter((e: Equipment) => e.isAvailable).length);
         setRecentEquipment(equipment.slice(0, 5));
 
-        const whResponse = await fetch('http://localhost:4000/api/warehouses');
+        const whResponse = await fetch(`${API_URL}/api/warehouses`);
         const whData = await whResponse.json();
         const warehouses = whData.items || [];
         setWarehouseCount(warehouses.length);

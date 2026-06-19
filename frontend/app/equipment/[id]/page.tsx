@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
+import { API_URL } from '@/lib/api';
 
 interface Equipment {
   id: string;
@@ -34,9 +35,7 @@ export default function EquipmentDetailPage() {
       setLoading(true);
       setError(null);
       
-      const response = await fetch(`http://localhost:4000/api/equipment/${id}`, {
-        headers: { 'Content-Type': 'application/json' },
-      });
+      const response = await fetch(`${API_URL}/api/equipment/${id}`);
       
       if (!response.ok) {
         if (response.status === 404) {
@@ -60,10 +59,7 @@ export default function EquipmentDetailPage() {
     
     try {
       setDeleting(true);
-      const response = await fetch(`http://localhost:4000/api/equipment/${id}`, {
-        method: 'DELETE',
-        headers: { 'Content-Type': 'application/json' },
-      });
+      const response = await fetch(`${API_URL}/api/equipment/${id}`);
       
       if (!response.ok) {
         throw new Error('Не удалось удалить оборудование');

@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
+import { API_URL } from '@/lib/api';
 
 export default function EditWarehousePage() {
   const params = useParams();
@@ -25,10 +26,7 @@ export default function EditWarehousePage() {
         setLoading(true);
         setError(null);
 
-        const response = await fetch(`http://localhost:4000/api/warehouses/${id}`);
-        if (!response.ok) {
-          throw new Error('Склад не найден');
-        }
+        const response = await fetch(`${API_URL}/api/warehouses/${id}`);
         const data = await response.json();
         
         setFormData({
@@ -56,11 +54,7 @@ export default function EditWarehousePage() {
     setSuccess(false);
 
     try {
-      const response = await fetch(`http://localhost:4000/api/warehouses/${id}`, {
-        method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
-      });
+      const response = await fetch(`${API_URL}/api/warehouses/${id}`);
 
       if (!response.ok) {
         const data = await response.json();
