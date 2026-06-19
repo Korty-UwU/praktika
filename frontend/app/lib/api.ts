@@ -1,4 +1,4 @@
-export const API_URL = 'praktika-production-128e.up.railway.app';
+export const API_URL = 'praktika-production-9917.up.railway.app';
 
 // Warehouses API
 export const warehousesApi = {
