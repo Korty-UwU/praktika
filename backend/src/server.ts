@@ -5,7 +5,7 @@ import warehouseRoutes from './routes/warehouseRoutes';
 import equipmentRoutes from './routes/equipmentRoutes';
 
 const app = express();
-const PORT = 4000;
+const PORT = process.env.PORT || 4000;
 
 // Middleware
 app.use(cors({ origin: 'http://localhost:3000' }));
@@ -20,9 +20,9 @@ app.use('/api/equipment', equipmentRoutes);
 
 // Обработка 404
 app.use((req, res) => {
-  res.status(404).json({ error: 'Route not found' });
+    res.status(404).json({ error: 'Route not found' });
 });
 
 app.listen(PORT, '0.0.0.0', () => {
-  console.log(`🚀 Backend running on http://localhost:${PORT}`);
+    console.log(`Backend running on http://localhost:${PORT}`);
 });
