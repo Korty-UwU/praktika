@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:4000/api';
+export const API_URL = 'praktika-production-128e.up.railway.app';
 
 // Warehouses API
 export const warehousesApi = {
