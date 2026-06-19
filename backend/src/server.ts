@@ -5,16 +5,17 @@ import warehouseRoutes from './routes/warehouseRoutes';
 import equipmentRoutes from './routes/equipmentRoutes';
 
 const app = express();
-const PORT = Number(process.env.PORT) || 4000;  // 👈 ПРЕОБРАЗУЕМ В ЧИСЛО
+const PORT = Number(process.env.PORT) || 4000;
 
-// Middleware
-app.use(cors({ origin: 'http://localhost:3000' }));
+app.use(cors({
+  origin: '*', 
+  credentials: true,
+}));
+
 app.use(express.json());
 
-// Инициализация хранилища
 initStore();
 
-// Healthcheck
 app.get('/health', (req, res) => {
   res.status(200).json({ 
     status: 'OK', 
@@ -23,15 +24,13 @@ app.get('/health', (req, res) => {
   });
 });
 
-// Роуты
 app.use('/api/warehouses', warehouseRoutes);
 app.use('/api/equipment', equipmentRoutes);
 
-// Обработка 404 (должна быть ПОСЛЕ всех роутов)
 app.use((req, res) => {
-    res.status(404).json({ error: 'Route not found' });
+  res.status(404).json({ error: 'Route not found' });
 });
 
 app.listen(PORT, '0.0.0.0', () => {
-    console.log(`Backend running on http://localhost:${PORT}`);
+  console.log(`Backend running on port ${PORT}`);
 });
